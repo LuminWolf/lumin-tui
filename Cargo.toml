@@ -1,0 +1,26 @@
+[package]
+name = "lumin-tui"
+version = "0.1.0"
+edition.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+dioxus = { version = "0.7", features = ["html"] }
+dioxus-native-dom = "0.7"
+blitz-dom = "0.2"
+blitz-traits = "0.2"
+blitz-html = "0.2"
+# render/style.rs 解析 stylo 计算色；blitz-dom 以 package="stylo" 提供，此处同名绑定为 style
+style = { package = "stylo", version = "0.8" }
+ratatui = "0.30"
+unicode-width = "0.2"
+# 与 unicode-width 搭配做 grapheme cluster 断言（emoji ZWJ / VS16 / 国旗序列整体算 1 单元）
+unicode-segmentation = "1"
+
+[dev-dependencies]
+# tests/common/mod.rs 加载 config/test/tui.json
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
